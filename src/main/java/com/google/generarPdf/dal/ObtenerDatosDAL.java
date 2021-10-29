@@ -24,12 +24,11 @@ public class ObtenerDatosDAL {
     public static  ArrayList<DatosDTO> obtenerItems(){
         ArrayList<DatosDTO> listDatosDTO = new ArrayList<DatosDTO>();
         try {
-            Sheet hojaExcel = Excel.obtenerHojaExcel(PATH.ARCHIVO_ENTRADA);
+            Sheet hojaExcel = Excel.obtenerHojaExcel();
 
             for (int fila = 1; fila <= hojaExcel.getLastRowNum(); fila++) {
                 DatosDTO  item = new DatosDTO();
                 item.setItem(validarDato(hojaExcel	,"Items" ,fila));
-                listDatosDTO.add(item);
                 if (!"".equals(item)){
                     System.out.println("Item a buscar: " + item.getItem());
                     listDatosDTO.add(item);
