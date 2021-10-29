@@ -11,7 +11,7 @@ import java.text.ParseException;
 
 public class Excel {
 
-    public static Sheet obtenerHojaExcel(String logPath) {
+    public static Sheet obtenerHojaExcel() {
         try {
             File archivo = new File(PATH.ARCHIVO_ENTRADA);
             // FileInputStream inputStream= (InputStream) ValidacionesUtils.validarArchivo(rutaExcel, "InputStream");
