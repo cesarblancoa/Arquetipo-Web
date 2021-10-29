@@ -1,6 +1,11 @@
 package com.google.generarPdf.utils;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class SistemaArchivo {
 
@@ -35,7 +40,25 @@ public class SistemaArchivo {
             validarDirectorioTrabajo(PATH.DIRECTORIO_DESCARGAS);
             System.out.println(e);
         }
+    }
 
+    public static void moverArchivosDescargados( String destino ) throws IOException, IOException {
+        String[] pathnames;
+
+        File directorioSolicitud = new File(PATH.DIRECTORIO_DESCARGAS);
+
+        pathnames = directorioSolicitud.list();
+        for (int i = 0; i < pathnames.length; i++) {
+            System.out.println(pathnames[i]);
+            try {
+                Path source = Paths.get(PATH.DIRECTORIO_DESCARGAS+"\\"+ pathnames[i]);
+                Path target = Paths.get(PATH.DIRECTORIO_TRABAJO+"\\"+destino+"\\"+ pathnames[i]);
+                Files.move(source, target);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
 
     }
+
 }
