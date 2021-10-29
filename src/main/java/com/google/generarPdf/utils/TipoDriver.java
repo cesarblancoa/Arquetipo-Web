@@ -1,4 +1,8 @@
 package com.google.generarPdf.utils;
 
-public class TipoDriver {
+public enum TipoDriver {
+    CHROME,
+    FIREFOX,
+    IE,
+    SAFARI
 }
