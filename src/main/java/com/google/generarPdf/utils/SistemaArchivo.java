@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class SistemaArchivo {
 
@@ -49,16 +48,34 @@ public class SistemaArchivo {
 
         pathnames = directorioSolicitud.list();
         for (int i = 0; i < pathnames.length; i++) {
-            System.out.println(pathnames[i]);
+            //System.out.println(pathnames[i]);
             try {
-                Path source = Paths.get(PATH.DIRECTORIO_DESCARGAS+"\\"+ pathnames[i]);
-                Path target = Paths.get(PATH.DIRECTORIO_TRABAJO+"\\"+destino+"\\"+ pathnames[i]);
+                Path source = Paths.get(PATH.DIRECTORIO_DESCARGAS + "\\" + pathnames[i]);
+                Path target = Paths.get(PATH.DIRECTORIO_TRABAJO + "\\" + destino + "\\" + pathnames[i]);
                 Files.move(source, target);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+    }
 
+    public static String[] listarContenidoDir(String item) {
+        String[] pathnames;
+
+        File directorioSolicitud = new File(PATH.DIRECTORIO_TRABAJO+"\\"+item);
+
+        pathnames = directorioSolicitud.list();
+//        for (String pathname : pathnames) {
+//            // Print the names of files and directories
+//            System.out.println(pathname);
+//        }
+        for (String pathname : pathnames) {
+            // Print the names of files and directories
+            System.out.println("-----------------------------");
+            System.out.println(pathname);
+        }
+        //System.out.println(pathnames);
+        return pathnames;
     }
 
 }
